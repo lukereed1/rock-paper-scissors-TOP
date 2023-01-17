@@ -16,7 +16,9 @@ function playRound() {
 		return "No result, the round was quit";
 	}
 	while (!choices.includes(playerSelection.toLowerCase())) {
-		playerSelection = prompt("Please enter rock, paper or scissors. Also check spelling");
+		playerSelection = prompt(
+			"Please enter rock, paper or scissors. Also check spelling"
+		);
 		if (playerSelection === null) {
 			playerSelection = "Nothing!";
 			alert("Round quit");
@@ -28,7 +30,11 @@ function playRound() {
 	// Compares player and computer choices and outputs accordingly
 	if (playerSelection === computerSelection) {
 		return `It's a tie! You both chose ${playerSelection}.`;
-	} else if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "rock")) {
+	} else if (
+		(playerSelection === "rock" && computerSelection === "scissors") ||
+		(playerSelection === "scissors" && computerSelection === "paper") ||
+		(playerSelection === "paper" && computerSelection === "rock")
+	) {
 		++playerScore;
 		return `You win! ${playerSelection} beats ${computerSelection}.`;
 	} else {
@@ -62,5 +68,3 @@ function game() {
 		console.log("You lost! Better luck next time");
 	}
 }
-
-game();
