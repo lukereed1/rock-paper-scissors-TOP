@@ -17,15 +17,15 @@ function playRound() {
 			return "No result, the game was quit.";
 		}
 	}
-
 	playerSelection = playerSelection.toLowerCase();
+	
 	// Compares player and computer choices and outputs accordingly
 	if (playerSelection === computerSelection) {
 		return `It's a tie! You both chose ${playerSelection}.`;
 
 	} else if ((playerSelection === "rock" && computerSelection === "scissors") ||
-	 		   (playerSelection === "scissors" && computerSelection === "paper") ||
-			   (playerSelection === "paper" && computerSelection === "rock")) {
+	 	(playerSelection === "scissors" && computerSelection === "paper") ||
+		(playerSelection === "paper" && computerSelection === "rock")) {
 		return `You win! ${playerSelection} beats ${computerSelection}.`;
 
 	} else {
