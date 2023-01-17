@@ -43,7 +43,7 @@ function playRound() {
 	}
 }
 
-//Starts a five round game, giving both choices and a score update each round and a final result at the end
+// Starts a five round game, giving both choices and a score update each round and a final result at the end
 function game() {
 	for (i = 1; i <= 5; ++i) {
 		let result = playRound();
@@ -68,3 +68,5 @@ function game() {
 		console.log("You lost! Better luck next time");
 	}
 }
+
+game();
