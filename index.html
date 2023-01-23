@@ -6,11 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <script src="script.js"></script>
+    <h1 id="heading">Rock - Paper - Scissors</h1>
+    <main class="main">
+        <div class="container">
+            <div class="user-choice">
+                <h2 id="human-header">HUMAN</h2>
+                <img id="rock" class="choice" src="./images/rock.png" alt="Rock button">
+                <img id="paper" class="choice" src="./images/paper.png" alt="Paper button">
+                <img id="scissors" class="choice" src="./images/scissors.png" alt="Scissors button">
+            </div>
+            <img id="rules" src="./images/rps-rules.png" alt="Rules">
+            <div class="computer-choice">
+                <h2 id="computer-header">COMPUTER</h2>
+                <img id="computer-rock" class="choice" src="./images/rock.png" alt="Rock button">
+                <img id="computer-paper" class="choice" src="./images/paper.png" alt="Paper button">
+                <img id="computer-scissors" class="choice" src="./images/scissors.png" alt="Scissors button">
+            </div>
+        </div>
+    </main>
+
+
 </body>
 
 </html>

@@ -1,0 +1,46 @@
+body {
+	display: flex;
+	flex-direction: column;
+	font-family: "Poppins", sans-serif;
+}
+
+h1 {
+	text-align: center;
+	font-size: 3.5rem;
+}
+
+h2 {
+	font-size: 2rem;
+}
+
+.main {
+	display: flex;
+	justify-content: center;
+}
+
+.container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-basis: 1400px;
+}
+
+.user-choice,
+.computer-choice {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 0 1em 1em 1em;
+}
+
+#rules {
+	width: 40em;
+	height: 35em;
+}
+
+.choice {
+	height: auto;
+	width: 13em;
+	cursor: pointer;
+}
