@@ -32,39 +32,36 @@ function computerRandom() {
 const userWin = () => (userScore.innerText = Number(userScore.innerText) + 1);
 const computerWin = () => (compScore.innerText = Number(compScore.innerText) + 1);
 
+if (userScore.innerText >= 5) {
+	listItem.classList.add("win-result");
+	listItem.appendChild(document.createTextNode("Congratulations, you've won!"));
+	resultList.insertBefore(listItem, resultList.firstChild);
+	body.insertBefore(playAgainBtn, resultList);
+	userRock.removeEventListener("click", playRound);
+	userPaper.removeEventListener("click", playRound);
+	userScissors.removeEventListener("click", playRound);
+} else if (compScore.innerText >= 5) {
+	listItem.classList.add("lose-result");
+	listItem.appendChild(document.createTextNode("Unlucky, you lost!"));
+	resultList.insertBefore(listItem, resultList.firstChild);
+	body.insertBefore(playAgainBtn, resultList);
+	userRock.removeEventListener("click", playRound);
+	userPaper.removeEventListener("click", playRound);
+	userScissors.removeEventListener("click", playRound);
+}
+
 function playRound(e) {
 	const playerSelection = e.target.id;
 	const computerSelection = computerRandom();
 	const listItem = document.createElement("li");
+	const winResult = document.createElement("li");
+	const loseResult = document.createElement("li");
 	const playAgainBtn = document.createElement("button");
+	playAgainBtn.addEventListener("click", refreshPage);
 	playAgainBtn.textContent = "Play again?";
 	playAgainBtn.classList.add("play-again-btn");
-	// Styles new list items
 	listItem.classList.add("result-list");
-	if (userScore.innerText >= 5) {
-		listItem.classList.add("win-result");
-		listItem.appendChild(document.createTextNode("Congratulations, you've won!"));
-		resultList.insertBefore(listItem, resultList.firstChild);
-		body.insertBefore(playAgainBtn, resultList);
-		userRock.removeEventListener("click", playRound);
-		userPaper.removeEventListener("click", playRound);
-		userScissors.removeEventListener("click", playRound);
-	} else if (compScore.innerText >= 5) {
-		listItem.classList.add("lose-result");
-		listItem.appendChild(document.createTextNode("Unlucky, you lost!"));
-		resultList.insertBefore(listItem, resultList.firstChild);
-		body.insertBefore(playAgainBtn, resultList);
-		userRock.removeEventListener("click", playRound);
-		userPaper.removeEventListener("click", playRound);
-		userScissors.removeEventListener("click", playRound);
-	} else if (playerSelection === computerSelection) {
-		// Creates new list item
-		listItem.appendChild(
-			document.createTextNode(`It's a draw, you both chose ${playerSelection}!`)
-		);
-		// Adds new item to list created earlier, using inserBefore to ensure it goes to the start of list
-		resultList.insertBefore(listItem, resultList.firstChild);
-	} else if (
+	if (
 		(playerSelection === "rock" && computerSelection === "scissors") ||
 		(playerSelection === "scissors" && computerSelection === "paper") ||
 		(playerSelection === "paper" && computerSelection === "rock")
@@ -74,11 +71,44 @@ function playRound(e) {
 		);
 		resultList.insertBefore(listItem, resultList.firstChild);
 		userWin();
-	} else {
+		if (userScore.innerText >= 5) {
+			winResult.classList.add("win-result");
+			winResult.appendChild(document.createTextNode("Congratulations, you've won!"));
+			resultList.insertBefore(winResult, resultList.firstChild);
+			body.insertBefore(playAgainBtn, resultList);
+			disableUserButtons();
+		}
+	} else if (
+		(playerSelection === "rock" && computerSelection === "paper") ||
+		(playerSelection === "scissors" && computerSelection === "rock") ||
+		(playerSelection === "paper" && computerSelection === "scissors")
+	) {
 		listItem.appendChild(
 			document.createTextNode(`You lose, ${computerSelection} beats ${playerSelection}!`)
 		);
 		resultList.insertBefore(listItem, resultList.firstChild);
 		computerWin();
+		if (compScore.innerText >= 5) {
+			loseResult.classList.add("lose-result");
+			loseResult.appendChild(document.createTextNode("Unlucky, you lost!"));
+			resultList.insertBefore(loseResult, resultList.firstChild);
+			body.insertBefore(playAgainBtn, resultList);
+			disableUserButtons();
+		}
+	} else {
+		listItem.appendChild(
+			document.createTextNode(`It's a draw, you both chose ${playerSelection}!`)
+		);
+		resultList.insertBefore(listItem, resultList.firstChild);
 	}
+}
+
+function disableUserButtons() {
+	userRock.removeEventListener("click", playRound);
+	userPaper.removeEventListener("click", playRound);
+	userScissors.removeEventListener("click", playRound);
+}
+
+function refreshPage() {
+	window.location.reload(true);
 }
