@@ -51,6 +51,9 @@ h1 {
 	height: auto;
 	width: 13em;
 	cursor: pointer;
+	transition: all 0.5s;
+	border: 2px solid black;
+	margin-bottom: 0.75em;
 }
 
 .result-list {
