@@ -52,7 +52,7 @@ function playRound(e) {
 			winResult.appendChild(document.createTextNode("Congratulations, you've won!"));
 			resultList.insertBefore(winResult, resultList.firstChild);
 			body.insertBefore(playAgainBtn, resultList);
-			disableAllButtons();
+			disableAllButtons(); // Disables all the buttons once the game has finished
 		}
 	} else if (
 		(playerSelection === "rock" && computerSelection === "paper") ||
@@ -116,13 +116,13 @@ function userWin() {
 function computerWin() {
 	compScore.innerText = Number(compScore.innerText) + 1;
 }
-// Removes the styling of the users last pick so the new one can be shown
+// Removes the styling of the users last pick
 function removeUsersLastPick() {
 	userRock.classList.remove("user-comp-choice");
 	userPaper.classList.remove("user-comp-choice");
 	userScissors.classList.remove("user-comp-choice");
 }
-// Removes the styling of the computers last pick so the new one can be shown
+// Removes the styling of the computers last pick
 function removeCompsLastPick() {
 	computerRock.classList.remove("user-comp-choice");
 	computerPaper.classList.remove("user-comp-choice");
@@ -137,7 +137,7 @@ function computerMessage() {
 	);
 	resultList.insertBefore(errorMessage, resultList.firstChild);
 }
-// Disables all buttons when the game is over
+// Disables all buttons for when the game is over
 function disableAllButtons() {
 	userRock.removeEventListener("click", playRound);
 	userPaper.removeEventListener("click", playRound);
